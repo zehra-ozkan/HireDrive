@@ -64,7 +64,7 @@
                         <Insets right="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="logOutButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: black; -fx-border-radius: 10; -fx-border-insets: 0; -fx-border-width: 1; -fx-border-color: black; -fx-background-radius: 10;" text="Log Out" textFill="WHITE">
+                  <Button fx:id="logOutButton" alignment="CENTER" mnemonicParsing="false" onAction="#btn_clicked" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: black; -fx-border-radius: 10; -fx-border-insets: 0; -fx-border-width: 1; -fx-border-color: black; -fx-background-radius: 10;" text="Log Out" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
@@ -82,7 +82,7 @@
       </ScrollPane>
    </left>
    <center>
-      <VBox fx:id="messages" alignment="CENTER" prefHeight="720.0" prefWidth="584.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="720.0" prefWidth="584.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" prefHeight="79.0" prefWidth="790.0" style="-fx-background-color: white;">
                <VBox.margin>
@@ -101,8 +101,10 @@
                   <Insets left="15.0" right="15.0" />
                </VBox.margin>
             </Separator>
-            <VBox />
-            <ScrollPane prefHeight="677.0" prefWidth="860.0" style="-fx-background-color: white;" />
+            <ScrollPane fx:id="scrollPane" prefHeight="677.0" prefWidth="860.0" style="-fx-background-color: white;">
+               <content>
+                  <VBox fx:id="messages" />
+               </content></ScrollPane>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" prefHeight="79.0" prefWidth="790.0" style="-fx-background-color: #2c3e50;">
                <children>
                   <TextArea fx:id="messageBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#sendMethod" prefHeight="43.0" prefWidth="740.0" promptText="Enter Message..." scaleShape="false" style="-fx-border-radius: 5; -fx-border-color: black;" wrapText="true">
@@ -113,7 +115,7 @@
                         <Insets bottom="15.0" left="15.0" right="2.0" top="15.0" />
                      </HBox.margin>
                   </TextArea>
-                  <Button fx:id="send_btn" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="43.0" prefWidth="140.0" scaleShape="false" style="-fx-background-color: black;" text="Send" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="NEVER">
+                  <Button fx:id="send_btn" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btn_clicked" prefHeight="43.0" prefWidth="140.0" scaleShape="false" style="-fx-background-color: black;" text="Send" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
@@ -137,7 +139,7 @@
                   <Insets top="50.0" />
                </VBox.margin>
             </Circle>
-            <Label alignment="CENTER" prefHeight="20.0" prefWidth="289.0" text="other username/ID ">
+            <Label fx:id="reciever_text" alignment="CENTER" prefHeight="20.0" prefWidth="289.0" text="other username/ID ">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

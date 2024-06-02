@@ -56,6 +56,7 @@ public class Driver extends User {
     }
 
     public Company getWorkWith(){
+        if(worksWith == null) worksWith = UserConnection.getCompanyOfDriver(userId);
         return worksWith;
     }
     public String toString(){

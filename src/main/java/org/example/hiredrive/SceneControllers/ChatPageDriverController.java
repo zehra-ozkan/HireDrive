@@ -3,10 +3,7 @@ package org.example.hiredrive.SceneControllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -25,8 +22,9 @@ import java.util.ArrayList;
 
 public class ChatPageDriverController extends SuperSceneController {
 
+
     @FXML
-    private Button send_btn;
+    private ScrollPane scrollPane;
 
     @FXML
     private Button logOutButton;
@@ -36,6 +34,9 @@ public class ChatPageDriverController extends SuperSceneController {
 
     @FXML
     private TextArea messageBox;
+
+    @FXML
+    private VBox messages;
 
     @FXML
     private Button myProfileButton;
@@ -50,13 +51,16 @@ public class ChatPageDriverController extends SuperSceneController {
     private Circle profilePicCircle11;
 
     @FXML
+    private Label reciever_text;
+
+    @FXML
     private Button searchByNameButton;
 
     @FXML
     private TextField searchByNameTextArea;
 
     @FXML
-    private VBox messages;
+    private Button send_btn;
 
     @FXML
     private Button view_profile_btn;
@@ -67,7 +71,6 @@ public class ChatPageDriverController extends SuperSceneController {
     private Chat chat;
 
 
-    //TODO vbox needed
     @FXML
     void btn_clicked(ActionEvent event) {
         if(event.getSource() == main_btn) {
@@ -82,7 +85,20 @@ public class ChatPageDriverController extends SuperSceneController {
             Stage main = (Stage) myProfileButton.getScene().getWindow();
             createScene("/org/example/hiredrive/Scenes/ProfilePageDriver.fxml", driver);
             main.close();
+        }else if (event.getSource() == searchByNameTextArea) {
+
+        } else if (event.getSource() == send_btn) {
+            createMessage();
+            update();
+
         }
+    }
+    public void createMessage() {
+        if(messageBox.getText() == null) return;
+        Message message = new Message(driver, driver.getWorkWith(), messageBox.getText());
+        chat.sendMessage(message);
+        messageBox.clear();
+
     }
 
     //todo need to make sure that the driver is employed
@@ -90,38 +106,43 @@ public class ChatPageDriverController extends SuperSceneController {
     public void setData(Object data){
         driver = (Driver) data;
         chat = new Chat(driver, driver.getWorkWith());
+        myProfileButton.setText(driver.getUsername());
 
         update();
     }
 
     public void update() {
-        myProfileButton.setText(driver.getUsername());
 
         for (Message message : chat.getMessages()) {
             try{
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/realChatUser.fxml"));
-                HBox profilePage = loader.load();
-                realChatUserController driverAddIndController = loader.getController();
-                driverAddIndController.setData(message.getContent());
-                messages.getChildren().add(profilePage);
+                if(message.getSender().getUserId() == driver.getUserId()){
+                    loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/realChatUser.fxml"));
+                    HBox profilePage = loader.load();
+                    realChatUserController driverAddIndController = loader.getController();
+                    driverAddIndController.setData(message.getContent());
+                    messages.getChildren().add(profilePage);
+                }
+                else {
+                    loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/otherChatUser.fxml"));
+                    HBox profilePage = loader.load();
+                    otherChatUserController driverAddIndController = loader.getController();
+                    driverAddIndController.setData(message.getContent());
+                    messages.getChildren().add(profilePage);
+                }
+
             }catch (IOException e){
                 e.printStackTrace();
             }
         }
     }
-
-
-
-
     @FXML
-    void sendButtonAction(ActionEvent event) {
-        //sendMessage();
+    public void initialize() {
+        // Ensure the scrollPane is scrolled to the bottom when the content is fully loaded
+        scrollPane.vvalueProperty().bind(messages.heightProperty());
     }
-
     @FXML
     void sendMethod(KeyEvent event) {
 
     }
-
 }

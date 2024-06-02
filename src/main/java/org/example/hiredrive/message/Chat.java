@@ -22,6 +22,13 @@ public class Chat {
     public ArrayList<Message> showChat(int senderId, int receiverId){
         return messages;
     }
+    public void addMessage(Message message){
+        messages.add(message);
+    }
+    public void sendMessage(Message message){
+        messages.add(message);
+        MessageConnection.sendMessage(message.getSender().getUserId(), message.getReceiver().getUserId(), message.getContent());
+    }
 
     public Driver getDriver(){
         return driver;
@@ -32,5 +39,7 @@ public class Chat {
     public ArrayList<Message> getMessages(){
         return messages;
     }
+
+
 
 }

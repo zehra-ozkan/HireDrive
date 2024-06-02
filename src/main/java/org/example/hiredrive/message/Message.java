@@ -49,5 +49,9 @@ public class Message {
     public Date getDate(){
         return timeStamp;
     }
+    public String toString(){
+        return "sent from : " + this.sender.getUsername() + " to "  + receiver.getUsername()
+                + "\n"+  this.content ;
+    }
 
 }

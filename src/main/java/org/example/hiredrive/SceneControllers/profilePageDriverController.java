@@ -122,7 +122,7 @@ public class profilePageDriverController extends  SuperSceneController{
 
         }
         else if(event.getSource() == chat_btn) {
-            createScene("/org/example/hiredrive/Scenes/ChatPageDriver.fxml");
+            createScene("/org/example/hiredrive/Scenes/ChatPageDriver.fxml", user);
             Stage main = (Stage) chat_btn.getScene().getWindow();
             main.close();
         }

@@ -124,10 +124,15 @@ public class MessageConnection {
 
 
 
-        //sendMessage(50,51, "this is a  NEWWWW sample message");
-       ArrayList<Message> messages = retrieveMessagesBetweenUsers(50, 51);
-
-        for (Message message : messages) {System.out.println(message.getContent());}
+        sendMessage(45, 36 , "hey");
+        sendMessage(45, 36 , "hey");
+        sendMessage(36, 45 , "hey");
+        sendMessage(36, 45 , "hey");
+        sendMessage(36, 45 , "heyasdf adsf adsfjkh  hasdf asdfh dfaskh  hsdf ads kh d");
+        sendMessage(45, 36 , "heysdf sdf adsf adsf asdf asdf");
+        sendMessage(45, 36 , "hesdy");
+        sendMessage(36, 45 , "hey2");
+        sendMessage(36, 45 , "this is the last message");
 
 
     }
