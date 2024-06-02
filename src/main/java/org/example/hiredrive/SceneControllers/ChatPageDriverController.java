@@ -2,24 +2,31 @@ package org.example.hiredrive.SceneControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SearchPage.driverAddIndividiualController;
+import org.example.hiredrive.message.Chat;
+import org.example.hiredrive.message.Message;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
 
 import static org.example.hiredrive.SceneControllers.signIn.SignInController.user;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class ChatPageController extends SuperSceneController {
+public class ChatPageDriverController extends SuperSceneController {
 
     @FXML
-    private Button buttonSend1;
+    private Button send_btn;
 
     @FXML
     private Button logOutButton;
@@ -28,7 +35,7 @@ public class ChatPageController extends SuperSceneController {
     private Button main_btn;
 
     @FXML
-    private TextArea messageBox1;
+    private TextArea messageBox;
 
     @FXML
     private Button myProfileButton;
@@ -49,14 +56,18 @@ public class ChatPageController extends SuperSceneController {
     private TextField searchByNameTextArea;
 
     @FXML
+    private VBox messages;
+
+    @FXML
     private Button view_profile_btn;
 
-    private ArrayList<Company> messageSendedCompanies;
 
     private Label userInfo;
-    private Driver driver = (Driver) user ;
+    private Driver driver;
+    private Chat chat;
 
 
+    //TODO vbox needed
     @FXML
     void btn_clicked(ActionEvent event) {
         if(event.getSource() == main_btn) {
@@ -74,14 +85,34 @@ public class ChatPageController extends SuperSceneController {
         }
     }
 
+    //todo need to make sure that the driver is employed
     @Override
     public void setData(Object data){
         driver = (Driver) data;
+        chat = new Chat(driver, driver.getWorkWith());
+
         update();
     }
+
     public void update() {
         myProfileButton.setText(driver.getUsername());
+
+        for (Message message : chat.getMessages()) {
+            try{
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/realChatUser.fxml"));
+                HBox profilePage = loader.load();
+                realChatUserController driverAddIndController = loader.getController();
+                driverAddIndController.setData(message.getContent());
+                messages.getChildren().add(profilePage);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
+
+
+
 
     @FXML
     void sendButtonAction(ActionEvent event) {

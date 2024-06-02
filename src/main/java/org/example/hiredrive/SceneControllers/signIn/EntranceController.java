@@ -1,14 +1,12 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.signIn;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 
-public class EntranceController extends SuperSceneController{
+public class EntranceController extends SuperSceneController {
 
     @FXML
     private Button btn_signIn;

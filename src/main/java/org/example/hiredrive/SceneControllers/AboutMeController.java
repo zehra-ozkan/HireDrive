@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.example.hiredrive.users.Driver;
 
-import static org.example.hiredrive.SceneControllers.SignInController.user;
+import static org.example.hiredrive.SceneControllers.signIn.SignInController.user;
 
 
 public class AboutMeController extends SuperSceneController{

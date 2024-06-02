@@ -12,15 +12,15 @@ public class Chat {
     private Company company;
     private ArrayList<Message> messages;
 
-    public Chat(Driver driver, Company company, ArrayList<Message> messages){
+    public Chat(Driver driver, Company company){
 
         this.driver = driver;
         this.company = company;
-        this.messages = messages;
+        this.messages = MessageConnection.retrieveMessagesBetweenUsers(driver.getUserId(), company.getUserId());
     }
 
     public ArrayList<Message> showChat(int senderId, int receiverId){
-        return MessageConnection.retrieveMessagesBetweenUsers(senderId, receiverId);
+        return messages;
     }
 
     public Driver getDriver(){

@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.SearchPage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.users.Driver;
 
 public class driverAddIndividiualController extends SuperSceneController {
@@ -37,7 +38,7 @@ public class driverAddIndividiualController extends SuperSceneController {
         Driver driver = (Driver) obj;
         this.IDText.setText(driver.getUserId() + "");
         this.nameSurnameText.setText(driver.getUsername());
-        this.experienceOfDriverText.setText("Experience " + driver.getExperience());
+        this.experienceOfDriverText.setText(driver.getExperience() + "");
         setNewRatingImage(driver.getRating());
 
     }

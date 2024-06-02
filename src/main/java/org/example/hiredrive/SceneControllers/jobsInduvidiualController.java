@@ -37,5 +37,4 @@ public class jobsInduvidiualController extends  SuperSceneController{
         this.IDText.setText(driver.getUserId() + "");
         this.nameSurnameText.setText(driver.getUsername());
     }
-
 }

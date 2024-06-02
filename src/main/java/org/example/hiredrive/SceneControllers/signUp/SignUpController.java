@@ -1,11 +1,12 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.signUp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 
-public class SignUpController extends SuperSceneController{
+public class SignUpController extends SuperSceneController {
 
     protected boolean verificationPass = false;
     @FXML

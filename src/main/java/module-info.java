@@ -19,4 +19,10 @@ module org.example.hiredrive {
     opens org.example.hiredrive.advertisement to javafx.fxml;
     exports org.example.hiredrive.message;
     opens org.example.hiredrive.message to javafx.fxml;
+    exports org.example.hiredrive.SceneControllers.signIn;
+    opens org.example.hiredrive.SceneControllers.signIn to javafx.fxml;
+    exports org.example.hiredrive.SceneControllers.signUp;
+    opens org.example.hiredrive.SceneControllers.signUp to javafx.fxml;
+    exports org.example.hiredrive.SceneControllers.SearchPage;
+    opens org.example.hiredrive.SceneControllers.SearchPage to javafx.fxml;
 }

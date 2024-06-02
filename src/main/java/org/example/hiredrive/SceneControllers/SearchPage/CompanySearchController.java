@@ -1,10 +1,11 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.SearchPage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.advertisement.Filter;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.User;
@@ -12,7 +13,7 @@ import org.example.hiredrive.users.User;
 import java.util.ArrayList;
 
 //Company searching for profiles
-public class CompanySearchController extends SuperSceneController{
+public class CompanySearchController extends SuperSceneController {
 
     @FXML
     private CheckBox A;

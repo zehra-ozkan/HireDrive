@@ -1,6 +1,5 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.SearchPage;
 
-import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.advertisement.Filter;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
@@ -18,7 +18,7 @@ import org.example.hiredrive.users.Driver;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FilteredDriverAddsController extends SuperSceneController{
+public class FilteredDriverAddsController extends SuperSceneController {
 
     @FXML
     private ChoiceBox<?> addOrderSelector;
@@ -53,7 +53,6 @@ public class FilteredDriverAddsController extends SuperSceneController{
     void btn_clicked(ActionEvent event) {
         if(event.getSource() == goMainPageScene) {
 
-
             Stage main = (Stage) goMainPageScene.getScene().getWindow();
 
             createScene("/org/example/hiredrive/Scenes/Search Page Company.fxml", company);
@@ -63,18 +62,14 @@ public class FilteredDriverAddsController extends SuperSceneController{
         else if(event.getSource() == logOutButton) {
 
             Stage main = (Stage) logOutButton.getScene().getWindow();
-
             main.close();
             createScene("/org/example/hiredrive/Scenes/entranceScene.fxml");
-
         }
         else if(event.getSource() == myProfileButton) {
 
             Stage main = (Stage) myProfileButton.getScene().getWindow();
-
             main.close();
             createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
-
         }
     }
 
@@ -82,18 +77,12 @@ public class FilteredDriverAddsController extends SuperSceneController{
 
         for (Driver driver : matchingDrivers) {
             try{
-
                 FXMLLoader loader = new FXMLLoader();
-
                 loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/DriverAddInduvidiual.fxml"));
                 HBox profilePage = loader.load();
-
                 driverAddIndividiualController driverAddIndController = loader.getController();
-
                 driverAddIndController.setData(driver);
-
                 addShowFrame.getChildren().add(profilePage);
-
             }catch (IOException e){
                 e.printStackTrace();
             }

@@ -336,10 +336,11 @@ public class AdvertisementConnection {
                         String requiredLicense = resultSet.getString("required_license");
                         String fromLocation = resultSet.getString("from_location");
                         String toLocation = resultSet.getString("to_location");
+                        String typeCargo = resultSet.getString("cargo_type");
                         int experience = resultSet.getInt("experience");
 
                         // Create Advertisement object and add to list
-                        Advertisement advertisement = new Advertisement(advertId, ownerId, addTitle, addContent, cargoType,
+                        Advertisement advertisement = new Advertisement(advertId, ownerId, addTitle, addContent, typeCargo,
                                 dueDate, getAllRequestsForAdvertisement(connection, advertId), requiredLicense, fromLocation, toLocation, experience);
                         filteredAdvertisements.add(advertisement);
                     }

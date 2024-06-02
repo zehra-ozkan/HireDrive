@@ -11,20 +11,20 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.CompanyAddIndividualController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.SearchPage.CompanyAddIndividualController">
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="177.0">
          <children>
-            <Label fx:id="IDText" alignment="CENTER" prefHeight="18.0" prefWidth="84.0" text="Cargo Type" textAlignment="CENTER">
+            <Label fx:id="cargoTypeText" alignment="CENTER" prefHeight="18.0" prefWidth="175.0" text="Cargo Type" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
          </children>
       </HBox>
-      <Separator orientation="VERTICAL" prefHeight="200.0" />
-      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="345.0">
+      <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="344.0">
          <children>
-            <Label fx:id="nameSurnameText" text="Add Topic">
+            <Label fx:id="adTitleText" prefHeight="18.0" prefWidth="346.0" text="Add Topic">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -44,6 +44,9 @@
                <padding>
                   <Insets left="30.0" />
                </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Label>
          </children>
          <opaqueInsets>
@@ -67,7 +70,10 @@
       <Separator orientation="VERTICAL" prefHeight="200.0" />
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="80.0">
          <children>
-            <Label fx:id="creationDateText" alignment="CENTER" prefHeight="22.0" prefWidth="91.0" style="-fx-border-radius: 8; -fx-border-width: 1;" text="Date" />
+            <Label fx:id="dueDateText" alignment="CENTER" prefHeight="22.0" prefWidth="91.0" style="-fx-border-radius: 8; -fx-border-width: 1;" text="Date">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
       <Separator orientation="VERTICAL" prefHeight="200.0" />

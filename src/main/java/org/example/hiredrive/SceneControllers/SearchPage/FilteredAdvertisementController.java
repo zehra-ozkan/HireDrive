@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.SearchPage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,15 +10,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.advertisement.Advertisement;
 import org.example.hiredrive.advertisement.Filter;
-import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FilteredAdvertisementController extends SuperSceneController{
+public class FilteredAdvertisementController extends SuperSceneController {
 
     private Driver driver;
     private Filter filter;

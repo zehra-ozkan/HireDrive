@@ -1,6 +1,4 @@
-package org.example.hiredrive.SceneControllers;
-
-import java.io.File;
+package org.example.hiredrive.SceneControllers.SearchPage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,24 +7,24 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.advertisement.Advertisement;
-import org.example.hiredrive.users.Company;
-import org.example.hiredrive.users.Driver;
 
 
-public class CompanyAddIndividualController extends SuperSceneController{
+public class CompanyAddIndividualController extends SuperSceneController {
 
     @FXML
     private Label CompanyNameText;
 
     @FXML
-    private Label IDText;
+    private Label adTitleText;
 
     @FXML
-    private Label creationDateText;
+    private Label cargoTypeText;
+
+    @FXML
+    private Label dueDateText;
 
     @FXML
     private Label experienceOfDriverText;
@@ -95,12 +93,13 @@ public class CompanyAddIndividualController extends SuperSceneController{
     }
     @Override
     public void setData(Object data){
-        Advertisement company = (Advertisement) data;
-        this.IDText.setText(company.getAddTitle());
-        this.nameSurnameText.setText(company.getContent());
+        Advertisement advertisement = (Advertisement) data;
+        this.cargoTypeText.setText(advertisement.getCargoType());
+        this.CompanyNameText.setText(advertisement.getOwner().getUsername());
+        this.adTitleText.setText(advertisement.getAddTitle());
+        this.dueDateText.setText(advertisement.getDueDate().toString());
 
-        this.rating = company.getOwner().getRating();
-        //this.experienceOfDriverText.setText("Experience " + driver.getExperience());
+        this.rating = advertisement.getOwner().getRating();
         setNewRatingImage(rating);
 
     }

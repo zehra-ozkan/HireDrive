@@ -1,12 +1,12 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.SearchPage;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.advertisement.Filter;
 import org.example.hiredrive.users.Driver;
 import org.example.hiredrive.users.User;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 
 
-public class DriverSearchController extends SuperSceneController{
+public class DriverSearchController extends SuperSceneController {
 
 
     @FXML

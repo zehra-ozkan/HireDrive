@@ -9,21 +9,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<HBox fx:id="getHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.driverAddIndividiualController">
+<HBox fx:id="getHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.SearchPage.driverAddIndividiualController">
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="135.0">
          <children>
-            <Label fx:id="IDText" text="ID" />
+            <Label fx:id="IDText" text="ID">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
       <Separator orientation="VERTICAL" prefHeight="200.0" />
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="400.0">
          <children>
-            <Label fx:id="nameSurnameText" text="Name Surname">
+            <Label fx:id="nameSurnameText" prefHeight="27.0" prefWidth="197.0" text="Name Surname">
                <padding>
                   <Insets left="30.0" />
                </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Label>
          </children>
          <opaqueInsets>
@@ -47,13 +54,19 @@
       <Separator orientation="VERTICAL" prefHeight="200.0" />
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="120.0">
          <children>
-            <Label fx:id="experienceOfDriverText" alignment="CENTER" prefHeight="22.0" prefWidth="91.0" style="-fx-border-radius: 8; -fx-border-width: 1; -fx-border-color: black;" text="Experience" />
+            <Label fx:id="experienceOfDriverText" alignment="CENTER" prefHeight="22.0" prefWidth="102.0" style="-fx-border-radius: 8; -fx-border-width: 1; -fx-border-color: white;" text="Experience">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
       <Separator orientation="VERTICAL" prefHeight="200.0" />
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="120.0">
          <children>
-            <Label fx:id="creationDateText" alignment="CENTER" prefHeight="22.0" prefWidth="91.0" style="-fx-border-radius: 8; -fx-border-width: 1;" text="Date" />
+            <Label fx:id="creationDateText" alignment="CENTER" prefHeight="22.0" prefWidth="91.0" style="-fx-border-radius: 8; -fx-border-width: 1;" text="Date">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
       <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />

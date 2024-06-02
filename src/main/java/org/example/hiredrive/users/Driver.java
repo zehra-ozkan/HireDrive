@@ -10,6 +10,7 @@ import org.example.hiredrive.Connection.UserConnection;
 
 public class Driver extends User {
     private boolean available;
+    private Company worksWith;
     private ArrayList<String> lisenses;
     private String surname;
     private int experience;
@@ -25,6 +26,7 @@ public class Driver extends User {
         UserConnection.addUser(username, surname, email, password, phoneNo,"driver", Date.valueOf(LocalDate.now()), experience);
         userId = UserConnection.getUserID(email);
         userType = "driver";
+        worksWith = UserConnection.getCompanyOfDriver(userId);
         setRating(ReviewConnection.getRating(userId));
 
     }
@@ -53,6 +55,9 @@ public class Driver extends User {
         return LicencesConnection.getLicensesForDriver(userId);
     }
 
+    public Company getWorkWith(){
+        return worksWith;
+    }
     public String toString(){
         return super.toString() + "driver " + available + "\nLisenses: " + lisenses;
     }

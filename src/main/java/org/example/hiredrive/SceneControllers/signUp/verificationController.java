@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.signUp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,11 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.hiredrive.SceneControllers.signIn.DriverSignUpController;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.message.MailManager;
 import org.example.hiredrive.users.User;
 
-public class verificationController extends SuperSceneController{
+public class verificationController extends SuperSceneController {
 
     private String email;
     private SuperSceneController prevScene;

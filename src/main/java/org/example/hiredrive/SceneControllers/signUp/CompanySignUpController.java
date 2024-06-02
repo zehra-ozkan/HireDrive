@@ -1,18 +1,17 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.signUp;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.message.MailManager;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.User;
 
-public class CompanySignUpController extends SuperSceneController{
+public class CompanySignUpController extends SuperSceneController {
 
     @FXML
     private TextField cNameField;
