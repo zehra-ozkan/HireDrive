@@ -9,12 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import org.example.hiredrive.Connection.MessageConnection;
-import org.example.hiredrive.message.Chat;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
-import org.example.hiredrive.users.User;
-import static org.example.hiredrive.SceneControllers.SignInController.user;
+
+import static org.example.hiredrive.SceneControllers.signIn.SignInController.user;
 
 import java.util.ArrayList;
 
