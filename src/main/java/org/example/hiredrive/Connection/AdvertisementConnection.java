@@ -124,7 +124,7 @@ public class AdvertisementConnection {
                 String to = rs.getString("to_location");
 
 
-                advertisements.add(new Advertisement(advertId, owner_id, addTitle, addContent, cargoType,dueDate, getAllRequestsForAdvertisement(advertId), from, to, license, experience ));
+                advertisements.add(new Advertisement(advertId, owner_id, addTitle, addContent, cargoType,dueDate, getAllRequestsForAdvertisement(conn,advertId), from, to, license, experience ));
 
             }
         } catch (SQLException e) {
@@ -137,7 +137,7 @@ public class AdvertisementConnection {
         Advertisement advertisement = null;
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String query = "SELECT owner_id, add_title, cargo_type, add_content, due_date, requests FROM advertisement WHERE advert_id = ?";
+            String query = "SELECT * FROM advertisement WHERE advert_id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, add_id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -154,9 +154,11 @@ public class AdvertisementConnection {
 
                         //public Advertisement(Company owner, String addTitle,String addContent, String cargoType, Date dueDate)
 //
-                        advertisement = new Advertisement(add_id, owner_id, add_title, add_content, cargo_type, due_date, getAllRequestsForAdvertisement(add_id),from, to, license, experience);
+                        advertisement = new Advertisement(add_id, owner_id, add_title, add_content, cargo_type, due_date, getAllRequestsForAdvertisement(connection, add_id),from, to, license, experience);
                     }
+
                 }
+                connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -179,30 +181,27 @@ public class AdvertisementConnection {
         }
         return count;
     }
-    public static ArrayList<Request> getAllRequestsForAdvertisement(int advertisementId) {
+    public static ArrayList<Request> getAllRequestsForAdvertisement(Connection connection, int advertisementId) {
         ArrayList<Request> requests = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            // Prepare SQL statement
-            String sql = "SELECT * FROM jobRequests WHERE add_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
+        String sql = "SELECT * FROM jobRequests WHERE add_id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, advertisementId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int sender_id = resultSet.getInt("sender_id");
+                    int addId = resultSet.getInt("add_id");
+                    String status = resultSet.getString("status");
 
-            // Execute query
-            ResultSet resultSet = statement.executeQuery();
-
-            // Process the result set
-            while (resultSet.next()) {
-                int driverId = resultSet.getInt("driver_id");
-                int addId = resultSet.getInt("add_id");
-                String status = resultSet.getString("status");
-
-                // Create JobRequest object
-                Request request = new Request(status, driverId, addId);
-                requests.add(request);
+                    // Create JobRequest object
+                    Request request = new Request(status, sender_id, addId);
+                    requests.add(request);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return requests;
     }
 
@@ -274,7 +273,7 @@ public class AdvertisementConnection {
                         String toLocation = resultSet.getString("to_location");
                         int experience = resultSet.getInt("experience");
                         double ownerRating = resultSet.getDouble("rating");
-                        Advertisement advertisement = new Advertisement(advertId, ownerId, addTitle, addContent, cargoType, dueDate, getAllRequestsForAdvertisement(advertId), requiredLicense, fromLocation, toLocation, experience);
+                        Advertisement advertisement = new Advertisement(advertId, ownerId, addTitle, addContent, cargoType, dueDate, getAllRequestsForAdvertisement(connection,advertId), requiredLicense, fromLocation, toLocation, experience);
                         filteredAdvertisements.add(advertisement);
                     }
                 }
@@ -334,7 +333,6 @@ public class AdvertisementConnection {
                         String addTitle = resultSet.getString("add_title");
                         String addContent = resultSet.getString("add_content");
                         Date dueDate = resultSet.getDate("due_date");
-                        int requests = resultSet.getInt("requests");
                         String requiredLicense = resultSet.getString("required_license");
                         String fromLocation = resultSet.getString("from_location");
                         String toLocation = resultSet.getString("to_location");
@@ -342,7 +340,7 @@ public class AdvertisementConnection {
 
                         // Create Advertisement object and add to list
                         Advertisement advertisement = new Advertisement(advertId, ownerId, addTitle, addContent, cargoType,
-                                dueDate, getAllRequestsForAdvertisement(advertId), requiredLicense, fromLocation, toLocation, experience);
+                                dueDate, getAllRequestsForAdvertisement(connection, advertId), requiredLicense, fromLocation, toLocation, experience);
                         filteredAdvertisements.add(advertisement);
                     }
                 }
@@ -354,8 +352,9 @@ public class AdvertisementConnection {
     }
 
     public static void main(String[] args) {
-        addAdvertisement(40, "new DENEMEEEE", "NEW CARGOOO","CONTENT" , Date.valueOf(LocalDate.now()), "LI" +
-                "", 5);
+
+        System.out.println(getAdvertisementById(111));
+
     }
 
 

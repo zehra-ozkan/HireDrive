@@ -30,11 +30,6 @@ public class Filter {
   //null constructor, for displayment of every ad
     public Filter(){
         this.isAvailable = true;
-//        this.userName = "%";
-//        this.from = "%";
-//        this.destination = "%";
-//        this.cargoType = "%";
-//        this.minRate = 0;
         this.maxRate = 5;//MAX_VALUE is impossible
         this.minExperienceLevel = 0;//MIN_VALUE is impossible
         this.maxExperienceLevel = 1000;//MAX_VALUE is impossible
@@ -44,21 +39,13 @@ public class Filter {
     }
 
     public ArrayList<Advertisement> getMatchingAds(){
-        //(String from, String destination, String cargoType, int minRate, int maxRate, Date minDeadline, Date maxDeadline)
-      return AdvertisementConnection.filterAdvertisements(from, destination, cargoType, minDeadline, maxDeadline);
+        return AdvertisementConnection.filterAdvertisements(from, destination, cargoType, minDeadline, maxDeadline);
     }
 
     public ArrayList<Driver> getMatchingDrivers(){
-      if(userName != null) getMatchingDrivers(userName);
-      return (ArrayList<Driver>) UserConnection.getUsersByFilter(minExperienceLevel, maxExperienceLevel, minRate, maxRate, licenses);
+        return (ArrayList<Driver>) UserConnection.getUsersByFilter(minExperienceLevel, maxExperienceLevel, minRate, maxRate, licenses);
 
-    }public ArrayList<Driver> getMatchingDrivers(String name){
-     return null;
     }
-    public ArrayList<Advertisement> getMatchingAds(Date deadline){
-        return null;
-    }
-
     public void setFrom(String from) {
       this.from = from;
   }
@@ -92,15 +79,15 @@ public class Filter {
   }
 
     public void setMinDeadline(Date minDeadline) {
-      this.minDeadline = minDeadline;
+        this.minDeadline = minDeadline;
   }
 
     public void setMaxDeadline(Date maxDeadline) {
       this.maxDeadline = maxDeadline;
   }
 
-    public void setUser(boolean isUser) {
-      this.isUser = isUser;
+        public void setUser(boolean isUser) {
+          this.isUser = isUser;
   }
 
     public void setAvailable(boolean isAvailable) {
@@ -113,7 +100,8 @@ public class Filter {
 
     public void setResultantsDrivers(ArrayList<Driver> resultantsDrivers) {
       this.resultantsDrivers = resultantsDrivers;
-  }
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }

@@ -66,13 +66,6 @@ public class RequestConnection {
         }
     }
 
-    /**
-     * Retrieves all the requests sent from the driver with the given id and status.
-     *
-     * @param driver_id The id of the driver
-     * @param status The status of the requests (optional, can be null)
-     * @return An ArrayList of Request objects representing the requests sent by the driver
-     */
     public static ArrayList<Request> getRequestsFromDriver(int driver_id, String status){
         ArrayList<Request> requests = new ArrayList<>();
 
@@ -152,5 +145,4 @@ public class RequestConnection {
     public static void main(String[] args) {
         sendJobRequestToAdd(35, 111);
     }
-
 }
