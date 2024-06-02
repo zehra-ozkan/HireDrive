@@ -8,6 +8,7 @@ public class Request {
 
     private String status;
     private User sender;
+    private int addID;
     private Advertisement add;
 
     //for users
@@ -21,8 +22,9 @@ public class Request {
     public Request(String status, int sender_id, int add_id) {
         this.status = status;
         this.sender = UserConnection.getUser(sender_id);
-        this.add = AdvertisementConnection.getAdvertisementById(add_id);
+        this.addID = add_id;
     }
+
 
     public String getStatus() {
         return status;
@@ -33,5 +35,8 @@ public class Request {
     public User getSender() {
         return sender;
     }
-    public Advertisement getAdd(){return add; }
+    public Advertisement getAdd(){
+        if(add == null) add = AdvertisementConnection.getAdvertisementById(addID);
+        return add;
+    }
 }
