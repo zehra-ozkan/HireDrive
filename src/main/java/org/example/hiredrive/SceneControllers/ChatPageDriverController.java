@@ -20,7 +20,7 @@ import static org.example.hiredrive.SceneControllers.signIn.SignInController.use
 import java.io.IOException;
 import java.util.ArrayList;
 
-public  class ChatPageDriverController extends SuperSceneController {
+public class ChatPageDriverController extends SuperSceneController {
 
 
     @FXML
