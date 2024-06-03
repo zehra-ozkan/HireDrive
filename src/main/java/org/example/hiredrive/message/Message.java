@@ -1,13 +1,12 @@
 package org.example.hiredrive.message;
 
+import org.example.hiredrive.Connection.MessageConnection;
 import org.example.hiredrive.users.User;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
-@SuppressWarnings("exports")
 public class Message {
-    //private int messageID;
     private boolean isRead;
     private User sender;
     private User receiver;
@@ -48,6 +47,10 @@ public class Message {
     }
     public Date getDate(){
         return timeStamp;
+    }
+    public void readMessage(){
+        this.isRead = true;
+        MessageConnection.markMessageAsRead(timeStamp, sender.getUserId(), receiver.getUserId());
     }
     public String toString(){
         return "sent from : " + this.sender.getUsername() + " to "  + receiver.getUsername()

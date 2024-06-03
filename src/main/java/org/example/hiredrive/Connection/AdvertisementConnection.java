@@ -351,6 +351,33 @@ public class AdvertisementConnection {
         }
         return filteredAdvertisements;
     }
+    public static Advertisement getAdvertisementOfDriver(int driverId) {
+        int advertisementId = -1; // Default value if no advertisement found
+        String sql = "SELECT advert_id FROM works_with  WHERE driver_id = ?";
+
+        try (
+                // Establishing a connection to the database
+                Connection conn = DriverManager.getConnection(url, username, password);
+                // Creating a PreparedStatement object
+                PreparedStatement pstmt = conn.prepareStatement(sql)
+        ) {
+            // Setting the driverId parameter
+            pstmt.setInt(1, driverId);
+
+            // Executing the query
+            ResultSet rs = pstmt.executeQuery();
+
+            // Checking if a result is returned
+            if (rs.next()) {
+                // Getting the advertisement ID from the result set
+                advertisementId = rs.getInt("advert_id");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching advertisement ID: " + e.getMessage());
+        }
+
+        return getAdvertisementById(advertisementId);
+    }
 
     public static void main(String[] args) {
 

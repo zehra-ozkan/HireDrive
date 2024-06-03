@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="driverBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mouse_clicked" onMouseEntered="#mouse_entered" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.chat.DriverChatInduvidualController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="56.0">
+         <children>
+            <Label fx:id="no" text="No">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+      <HBox alignment="CENTER" prefHeight="58.0" prefWidth="66.0">
+         <children>
+            <Circle fx:id="profilePicCircle" fill="#ff1f1f" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="278.0">
+         <children>
+            <Label fx:id="nameSurnameText" prefHeight="27.0" prefWidth="197.0" text="Name Surname">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="102.0">
+         <children>
+            <Label fx:id="dueDate" alignment="CENTER" prefHeight="22.0" prefWidth="176.0" style="-fx-border-radius: 8; -fx-border-width: 1; -fx-border-color: white;" text="Date">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="506.0">
+         <children>
+            <Label fx:id="addTitle" alignment="CENTER" prefHeight="22.0" prefWidth="297.0" style="-fx-border-radius: 8; -fx-border-width: 1;" text="Advertisement">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</HBox>

@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.profile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +16,12 @@ import javafx.stage.Stage;
 import java.io.File;
 
 import org.example.hiredrive.Connection.UserConnection;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.User;
 
 //this is for company
-public class ProfileControllerCompany extends  SuperSceneController{
+public class ProfileControllerCompany extends SuperSceneController {
 
     @FXML
     private Hyperlink chat_btn;
@@ -78,7 +79,7 @@ public class ProfileControllerCompany extends  SuperSceneController{
             Stage main = (Stage) logOutButton.getScene().getWindow();
             main.close();
         }else if (event.getSource() == chat_btn) {
-            createScene("/org/example/hiredrive/Scenes/Chat Page Company.fxml", this);
+            createScene("/org/example/hiredrive/Scenes/Chat Page Company.fxml", user);
             Stage main = (Stage) logOutButton.getScene().getWindow();
             main.close();
         }
@@ -107,13 +108,17 @@ public class ProfileControllerCompany extends  SuperSceneController{
             createScene("/org/example/hiredrive/Scenes/Jobs.fxml", this);
             Stage main = (Stage) job_btn.getScene().getWindow();
             main.close();
+        }else if(event.getSource() == chat_btn) {
+            createScene("/org/example/hiredrive/Scenes/Chat Page Company.fxml", user);
+            Stage main = (Stage) job_btn.getScene().getWindow();
+            main.close();
         }
     }
 
     @Override
     public void setData(Object data){
         prevScene = (SuperSceneController) data;
-        user = (Company) prevScene.getUserData();
+        user = prevScene.getUserData();
         update();
     }
     public User getUserData(){

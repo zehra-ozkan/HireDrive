@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.profile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,11 +15,12 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.hiredrive.Connection.UserConnection;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.users.Driver;
 
 import java.io.File;
 
-public class profilePageDriverController extends  SuperSceneController{
+public class profilePageDriverController extends SuperSceneController {
 
     @FXML
     private CheckBox A;
@@ -156,10 +157,8 @@ public class profilePageDriverController extends  SuperSceneController{
 
     @Override
     public void setData(Object data){
-        //prevScene = (SuperSceneController) data;
         user = (Driver)data;
         userInfo.setText(user.getUsername());
-       // rateInfo.setText(user.getRating() + "");
 
         update();
     }

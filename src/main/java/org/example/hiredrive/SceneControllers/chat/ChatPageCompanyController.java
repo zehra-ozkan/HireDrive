@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.chat;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,13 +9,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import org.example.hiredrive.SceneControllers.SearchPage.driverAddIndividiualController;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.message.Chat;
 import org.example.hiredrive.message.Message;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
-
-import static org.example.hiredrive.SceneControllers.signIn.SignInController.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +23,9 @@ public class ChatPageCompanyController extends SuperSceneController {
 
     @FXML
     private VBox messages;
+
+    @FXML
+    private VBox driverBox;
 
     @FXML
     private Button logOutButton;
@@ -63,13 +64,16 @@ public class ChatPageCompanyController extends SuperSceneController {
     private ScrollPane scrollPane;
 
     @FXML
+    private ScrollPane driverScroll;
+
+    @FXML
     private Button view_profile_btn;
 
 
     private Label userInfo;
     private Company company;
     private ArrayList<Driver> drivers;
-    private int currentDriver;
+    private int currentDriver = 0;
     private Chat chat;
 
 
@@ -109,7 +113,23 @@ public class ChatPageCompanyController extends SuperSceneController {
         drivers = company.getWorksWith();
         chat = new Chat(drivers.get(currentDriver), company);
         myProfileButton.setText(company.getUsername());
+        setDrivers();
         update();
+    }
+    private void setDrivers() {
+        for (Driver driver : drivers) {
+            try{
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/driverChatInduvidual.fxml"));
+                HBox profilePage = loader.load();
+                DriverChatInduvidualController driverAddIndController = loader.getController();
+                driverAddIndController.setData(driver);
+                profileBox.getChildren().add(profilePage);
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     public void update() {
@@ -127,6 +147,7 @@ public class ChatPageCompanyController extends SuperSceneController {
                 else {
                     loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/otherChatUser.fxml"));
                     HBox profilePage = loader.load();
+                    message.readMessage();
                     otherChatUserController driverAddIndController = loader.getController();
                     driverAddIndController.setData(message.getContent());
                     messages.getChildren().add(profilePage);

@@ -4,9 +4,11 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.example.hiredrive.Connection.AdvertisementConnection;
 import org.example.hiredrive.Connection.LicencesConnection;
 import org.example.hiredrive.Connection.ReviewConnection;
 import org.example.hiredrive.Connection.UserConnection;
+import org.example.hiredrive.advertisement.Advertisement;
 
 public class Driver extends User {
     private boolean available;
@@ -49,6 +51,9 @@ public class Driver extends User {
 
     public int getExperience(){
         return experience;
+    }
+    public Advertisement getAdvertisement(){
+        return AdvertisementConnection.getAdvertisementOfDriver(userId);
     }
 
     public ArrayList<String> getLicenses(){

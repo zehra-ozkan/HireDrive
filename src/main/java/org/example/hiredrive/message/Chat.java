@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.example.hiredrive.Connection.MessageConnection;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
+import org.example.hiredrive.users.User;
 
 public class Chat {
     //private int chatID;
@@ -35,6 +36,16 @@ public class Chat {
     }
     public Company getCompany(){
         return company;
+    }
+
+    //TODO user classına equals lazım
+    public boolean hasNewMessage(User user){
+        for(Message message : messages){
+            if(message.getSender().getUserId() == user.getUserId()){
+                return true;
+            }
+        }
+        return false;
     }
     public ArrayList<Message> getMessages(){
         return messages;

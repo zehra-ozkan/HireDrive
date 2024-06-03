@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.chat;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,16 +9,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import org.example.hiredrive.SceneControllers.SearchPage.driverAddIndividiualController;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.message.Chat;
 import org.example.hiredrive.message.Message;
-import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
 
-import static org.example.hiredrive.SceneControllers.signIn.SignInController.user;
-
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ChatPageDriverController extends SuperSceneController {
 

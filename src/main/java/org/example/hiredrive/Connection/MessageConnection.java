@@ -118,6 +118,34 @@ public class MessageConnection {
         }
         return  messages;
     }
+    public static void markMessageAsRead(Date dateSent, int senderId, int receiverId) {
+        // SQL query to update the is_read column
+        String sql = "UPDATE messages SET is_read = 1 WHERE date_sent = ? AND sender_id = ? AND receiver_id = ?";
+
+        try (
+                // Establishing a connection to the database
+                Connection conn = DriverManager.getConnection(url, username, password);
+                // Creating a PreparedStatement object
+                PreparedStatement pstmt = conn.prepareStatement(sql)
+        ) {
+            // Setting parameters in the PreparedStatement
+            pstmt.setTimestamp(1, new java.sql.Timestamp(dateSent.getTime()));
+            pstmt.setInt(2, senderId);
+            pstmt.setInt(3, receiverId);
+
+            // Executing the update query
+            int rowsAffected = pstmt.executeUpdate();
+
+            // Checking if the update was successful
+            if (rowsAffected > 0) {
+                System.out.println("Message marked as read successfully.");
+            } else {
+                System.out.println("No message found with the specified details.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error marking message as read: " + e.getMessage());
+        }
+    }
 
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.profile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,12 +7,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.users.Driver;
 
 import static org.example.hiredrive.SceneControllers.signIn.SignInController.user;
 
 
-public class AboutMeController extends SuperSceneController{
+public class AboutMeController extends SuperSceneController {
     @FXML
     private Button backBtn;
 

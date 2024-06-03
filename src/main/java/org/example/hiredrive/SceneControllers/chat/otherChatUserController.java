@@ -1,9 +1,10 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.chat;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 
-public class otherChatUserController extends  SuperSceneController{
+public class otherChatUserController extends SuperSceneController {
 
     @FXML
     private HBox hboxOtherMesagess;

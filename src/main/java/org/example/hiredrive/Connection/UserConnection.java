@@ -596,11 +596,12 @@ public class UserConnection {
         return requests;
     }
 
+
     
 
     public static void main(String[] args) {
 
-        System.out.println(getCompanyOfDriver(45));
+        System.out.println(getUser(45));
 
     }
 }
