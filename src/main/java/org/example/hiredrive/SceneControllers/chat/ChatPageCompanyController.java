@@ -24,7 +24,7 @@ public class ChatPageCompanyController extends SuperSceneController {
 
 
     @FXML
-    private ScrollPane scrollPane;
+    private VBox messages;
 
     @FXML
     private Button logOutButton;
@@ -36,10 +36,10 @@ public class ChatPageCompanyController extends SuperSceneController {
     private TextArea messageBox;
 
     @FXML
-    private VBox messages;
+    private Button myProfileButton;
 
     @FXML
-    private Button myProfileButton;
+    private VBox profileBox;
 
     @FXML
     private Circle profilePicCircle;
@@ -51,9 +51,6 @@ public class ChatPageCompanyController extends SuperSceneController {
     private Circle profilePicCircle11;
 
     @FXML
-    private Label reciever_text;
-
-    @FXML
     private Button searchByNameButton;
 
     @FXML
@@ -61,6 +58,9 @@ public class ChatPageCompanyController extends SuperSceneController {
 
     @FXML
     private Button send_btn;
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     private Button view_profile_btn;
@@ -85,7 +85,7 @@ public class ChatPageCompanyController extends SuperSceneController {
             main.close();
         }else if (event.getSource() == myProfileButton) {
             Stage main = (Stage) myProfileButton.getScene().getWindow();
-            createScene("/org/example/hiredrive/Scenes/ProfilePageDriver.fxml", company);
+            createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
             main.close();
         }else if (event.getSource() == searchByNameTextArea) {
 
@@ -103,12 +103,11 @@ public class ChatPageCompanyController extends SuperSceneController {
 
     }
 
-    //todo need to make sure that the driver is employed
     @Override
     public void setData(Object data){
         company = (Company) data;
         drivers = company.getWorksWith();
-        chat = new Chat( drivers.get(currentDriver), company);
+        chat = new Chat(drivers.get(currentDriver), company);
         myProfileButton.setText(company.getUsername());
         update();
     }
