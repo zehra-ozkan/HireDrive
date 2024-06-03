@@ -17,7 +17,7 @@ public class App extends  Application{
         Parent root;
 
         try {
-            root =  FXMLLoader.load(getClass().getResource("/org/example/hiredrive/Scenes/entranceScene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/org/example/hiredrive/Scenes/entranceScene.fxml"));
             Scene scene = new Scene(root);
 
             stage.setTitle("entrance scene");
