@@ -99,7 +99,7 @@ public class ChatPageCompanyController extends SuperSceneController {
             main.close();}
         else if (event.getSource() == view_profile_btn) {
         Stage main = (Stage) view_profile_btn.getScene().getWindow();
-        createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
+        createScene("/org/example/hiredrive/Scenes/ProfilePageDriverFromCompany.fxml", company);
         main.close();
 
         }else if (event.getSource() == searchByNameTextArea) {
