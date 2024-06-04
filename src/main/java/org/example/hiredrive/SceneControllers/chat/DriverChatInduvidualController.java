@@ -31,7 +31,11 @@ public class DriverChatInduvidualController extends SuperSceneController{
     private Label no;
 
     @FXML
+    private Circle notification;
+
+    @FXML
     private Circle profilePicCircle;
+
 
     private Driver driver;
     private Chat chat;
@@ -42,6 +46,7 @@ public class DriverChatInduvidualController extends SuperSceneController{
     @FXML
     void mouse_clicked(MouseEvent event) {
 
+        driverBox.setStyle("-fx-background-color: #538abd;");
         s.setCurrentChat(index);
         s.update();
     }

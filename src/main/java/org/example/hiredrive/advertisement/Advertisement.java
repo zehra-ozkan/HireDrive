@@ -102,33 +102,24 @@ public class Advertisement {
         return requests;
     }
 
-    // Setter methods
-    public void setAdvertisementID(int advertisementID) {
-        this.advertisementID = advertisementID;
-    }
-
-    public void setOwner(Company owner) {
-        this.owner = owner;
-    }
-
-    public void setAddTitle(String addTitle) {
-        this.addTitle = addTitle;
-    }
-
     public void setContent(String content) {
         this.content = content;
     }
 
-    public void setCargoType(String cargoType) {
-        this.cargoType = cargoType;
+    @Override
+    public String toString() {
+        return "Advertisement ID: " + advertisementID + "\n" +
+                "Owner: " + owner.getUsername() + "\n" +
+                "Title: " + addTitle + "\n" +
+                "Content: " + content + "\n" +
+                "Cargo Type: " + cargoType + "\n" +
+                "Due Date: " + dueDate + "\n" +
+                "From: " + from + "\n" +
+                "To: " + to + "\n" +
+                "Experience Required: " + experience + " years\n" +
+                "Requests: " + requests;
     }
 
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
 
-    public void setRequests(ArrayList<Request> requests) {
-        this.requests = requests;
-    }
 
 }

@@ -21,12 +21,13 @@ import java.util.ArrayList;
 
 public class ChatPageCompanyController extends SuperSceneController {
 
+    //todo yeni mesaj bildirimi
 
     @FXML
-    private VBox messages;
+    private Label add_info;
 
     @FXML
-    private VBox driverBox;
+    private Label add_title;
 
     @FXML
     private Button logOutButton;
@@ -38,7 +39,13 @@ public class ChatPageCompanyController extends SuperSceneController {
     private TextArea messageBox;
 
     @FXML
+    private VBox messages;
+
+    @FXML
     private Button myProfileButton;
+
+    @FXML
+    private Label otherUsername;
 
     @FXML
     private VBox profileBox;
@@ -53,6 +60,9 @@ public class ChatPageCompanyController extends SuperSceneController {
     private Circle profilePicCircle11;
 
     @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
     private Button searchByNameButton;
 
     @FXML
@@ -62,18 +72,11 @@ public class ChatPageCompanyController extends SuperSceneController {
     private Button send_btn;
 
     @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
-    private ScrollPane driverScroll;
-
-    @FXML
     private Button view_profile_btn;
 
-
     private Label userInfo;
-    @FXML
-    private Label otherUsername;
+
+
 
     private Company company;
     private ArrayList<Chat> chats;
@@ -87,13 +90,18 @@ public class ChatPageCompanyController extends SuperSceneController {
             Stage main = (Stage) main_btn.getScene().getWindow();
             main.close();
         }else if (event.getSource() == logOutButton) {
-            createScene("/org/example/hiredrive/Scenes/entranceScene");
+            createScene("/org/example/hiredrive/Scenes/entranceScene.fxml");
             Stage main = (Stage) logOutButton.getScene().getWindow();
             main.close();
         }else if (event.getSource() == myProfileButton) {
             Stage main = (Stage) myProfileButton.getScene().getWindow();
             createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
-            main.close();
+            main.close();}
+        else if (event.getSource() == view_profile_btn) {
+        Stage main = (Stage) view_profile_btn.getScene().getWindow();
+        createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
+        main.close();
+
         }else if (event.getSource() == searchByNameTextArea) {
 
         } else if (event.getSource() == send_btn) {
@@ -184,6 +192,12 @@ public class ChatPageCompanyController extends SuperSceneController {
     }
     public void setCurrentChat(int currentChat) {
         this.currentChat = currentChat;
+        updateAdvertisement();
+    }
+    private void updateAdvertisement() {
+        Driver  currentDriver = chats.get(currentChat).getDriver();
+        add_title.setText(currentDriver.getAdvertisement().getAddTitle());
+        add_info.setText(currentDriver.getAdvertisement().toString());
     }
 
 }

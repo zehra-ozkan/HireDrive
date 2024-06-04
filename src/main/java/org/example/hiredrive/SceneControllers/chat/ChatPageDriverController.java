@@ -74,7 +74,7 @@ public class ChatPageDriverController extends SuperSceneController {
             Stage main = (Stage) main_btn.getScene().getWindow();
             main.close();
         }else if (event.getSource() == logOutButton) {
-            createScene("/org/example/hiredrive/Scenes/entranceScene");
+            createScene("/org/example/hiredrive/Scenes/entranceScene.fxml");
             Stage main = (Stage) logOutButton.getScene().getWindow();
             main.close();
         }else if (event.getSource() == myProfileButton) {
