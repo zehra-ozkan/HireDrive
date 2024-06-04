@@ -39,10 +39,12 @@ public class SignInController extends SuperSceneController {
     @FXML
     void signInBtnClicked(ActionEvent event) {
 
+        //todo here fix
         if(UserConnection.checkPassword(mailField.getText() , passwordField.getText())) {
 
             System.out.println("completed");
             Stage main = (Stage) signIn.getScene().getWindow();
+           // user = UserConnection.getUser("user2@example.com");
             user = UserConnection.getUser(mailField.getText());
 
             if(user.getUserType().equals("driver")){

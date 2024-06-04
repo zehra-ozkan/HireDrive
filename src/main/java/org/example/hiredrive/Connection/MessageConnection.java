@@ -139,8 +139,6 @@ public class MessageConnection {
             // Checking if the update was successful
             if (rowsAffected > 0) {
                 System.out.println("Message marked as read successfully.");
-            } else {
-                System.out.println("No message found with the specified details.");
             }
         } catch (SQLException e) {
             System.err.println("Error marking message as read: " + e.getMessage());

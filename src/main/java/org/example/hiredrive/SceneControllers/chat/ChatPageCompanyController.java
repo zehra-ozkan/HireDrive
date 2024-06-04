@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -71,10 +72,12 @@ public class ChatPageCompanyController extends SuperSceneController {
 
 
     private Label userInfo;
+    @FXML
+    private Label otherUsername;
+
     private Company company;
-    private ArrayList<Driver> drivers;
-    private int currentDriver = 0;
-    private Chat chat;
+    private ArrayList<Chat> chats;
+    private int currentChat = 0;
 
 
     @FXML
@@ -94,7 +97,8 @@ public class ChatPageCompanyController extends SuperSceneController {
         }else if (event.getSource() == searchByNameTextArea) {
 
         } else if (event.getSource() == send_btn) {
-            createMessage(drivers.get(currentDriver));
+            createMessage(chats.get(currentChat).getDriver());
+            setDrivers();
             update();
 
         }
@@ -102,39 +106,48 @@ public class ChatPageCompanyController extends SuperSceneController {
     public void createMessage(Driver driver) {
         if(messageBox.getText() == null) return;
         Message message = new Message(this.company, driver, messageBox.getText());
-        chat.sendMessage(message);
+        chats.get(currentChat).sendMessage(message);
         messageBox.clear();
 
     }
 
     @Override
     public void setData(Object data){
+        chats = new ArrayList<Chat>();
         company = (Company) data;
-        drivers = company.getWorksWith();
-        chat = new Chat(drivers.get(currentDriver), company);
         myProfileButton.setText(company.getUsername());
+        setChats();
         setDrivers();
         update();
     }
+    //todo can be more efficient
+    private void setChats() {
+        for(Driver driver : company.getWorksWith()){
+            chats.add(new Chat(driver, company));
+        }
+    }
     private void setDrivers() {
-        for (Driver driver : drivers) {
+        profileBox.getChildren().clear();
+        for (int i =0; i < chats.size(); i++) {
+            Chat chat =  chats.get(i);
             try{
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/driverChatInduvidual.fxml"));
-                HBox profilePage = loader.load();
+                Pane profilePage = loader.load();
                 DriverChatInduvidualController driverAddIndController = loader.getController();
-                driverAddIndController.setData(driver);
+                driverAddIndController.setData(this, chat, i);
                 profileBox.getChildren().add(profilePage);
 
             }catch (IOException e){
-                e.printStackTrace();
+                System.out.println(e);;
             }
         }
     }
 
     public void update() {
 
-        for (Message message : chat.getMessages()) {
+        messages.getChildren().clear();
+        for (Message message : chats.get(currentChat).getMessages()) {
             try{
                 FXMLLoader loader = new FXMLLoader();
                 if(message.getSender().getUserId() == company.getUserId()){
@@ -156,6 +169,8 @@ public class ChatPageCompanyController extends SuperSceneController {
             }catch (IOException e){
                 e.printStackTrace();
             }
+
+            otherUsername.setText(chats.get(currentChat).getDriver().getUsername());
         }
     }
     @FXML
@@ -167,4 +182,8 @@ public class ChatPageCompanyController extends SuperSceneController {
     void sendMethod(KeyEvent event) {
 
     }
+    public void setCurrentChat(int currentChat) {
+        this.currentChat = currentChat;
+    }
+
 }
