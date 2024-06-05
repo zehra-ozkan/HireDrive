@@ -20,8 +20,6 @@ import java.util.ArrayList;
 
 public class JobsController extends SuperSceneController{
 
-    @FXML
-    private RadioButton finishedJobs;
 
     @FXML
     private Button goMainPageScene;
@@ -31,9 +29,6 @@ public class JobsController extends SuperSceneController{
 
     @FXML
     private Button myProfileButton;
-
-    @FXML
-    private Circle profilePicCircle;
 
     @FXML
     private ToggleGroup request;
@@ -72,24 +67,18 @@ public class JobsController extends SuperSceneController{
             main.close();
         }
     }
-
-    @FXML
-    void search_name(ActionEvent event) {
-
-    }
     public void update() {
-
         for (Driver driver : matchingDrivers) {
             try{
 
                 FXMLLoader loader = new FXMLLoader();
 
-                loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/DriverAddInduvidiual.fxml"));
+                loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/jobsInduvidiual.fxml"));
                 HBox profilePage = loader.load();
 
-                driverAddIndividiualController driverAddIndController = loader.getController();
+                jobsInduvidiualController jController = loader.getController();
 
-                driverAddIndController.setData(driver);
+                jController.setData(driver);
 
                 job_box.getChildren().add(profilePage);
 

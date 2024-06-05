@@ -57,7 +57,6 @@ public class DriverChatInduvidualController extends SuperSceneController{
     }
     @FXML
     void mouse_exited(MouseEvent event) {
-
         driverBox.setStyle("-fx-background-color: #FFFFFF;");
     }
 

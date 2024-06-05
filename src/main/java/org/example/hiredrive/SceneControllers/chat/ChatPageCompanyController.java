@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class ChatPageCompanyController extends SuperSceneController {
 
     //todo yeni mesaj bildirimi
+    //todo search by name
 
     @FXML
     private Label add_info;
@@ -121,8 +122,13 @@ public class ChatPageCompanyController extends SuperSceneController {
 
     @Override
     public void setData(Object data){
-        chats = new ArrayList<Chat>();
-        company = (Company) data;
+        chats = new ArrayList<>();
+        if(data instanceof Company){
+            company = (Company) data;
+        } else if(data instanceof Driver){
+            company = ((Driver) data).getWorkWith();
+            setCurrentChat((Driver)data);
+        }
         myProfileButton.setText(company.getUsername());
         setChats();
         setDrivers();
@@ -151,7 +157,6 @@ public class ChatPageCompanyController extends SuperSceneController {
             }
         }
     }
-
     public void update() {
 
         messages.getChildren().clear();
@@ -173,11 +178,9 @@ public class ChatPageCompanyController extends SuperSceneController {
                     driverAddIndController.setData(message.getContent());
                     messages.getChildren().add(profilePage);
                 }
-
             }catch (IOException e){
                 e.printStackTrace();
             }
-
             otherUsername.setText(chats.get(currentChat).getDriver().getUsername());
         }
     }
@@ -193,6 +196,15 @@ public class ChatPageCompanyController extends SuperSceneController {
     public void setCurrentChat(int currentChat) {
         this.currentChat = currentChat;
         updateAdvertisement();
+    }
+    public void setCurrentChat(Driver driver){
+
+        for(int i =0; i < chats.size(); i++){
+            if(chats.get(i).getDriver().getUserId() == driver.getUserId()){
+                currentChat = i;
+                return;
+            }
+        }
     }
     private void updateAdvertisement() {
         Driver  currentDriver = chats.get(currentChat).getDriver();

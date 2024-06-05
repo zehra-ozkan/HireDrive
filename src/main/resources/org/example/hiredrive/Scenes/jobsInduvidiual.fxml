@@ -9,11 +9,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="getHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.jobsInduvidiualController">
+<HBox fx:id="job_box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.jobsInduvidiualController">
    <children>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="120.0">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="54.0">
          <children>
-            <Label fx:id="IDText" text="ID" />
+            <Label fx:id="IDText" text="ID">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
       <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -23,6 +26,9 @@
                <padding>
                   <Insets left="30.0" />
                </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Label>
          </children>
          <opaqueInsets>
