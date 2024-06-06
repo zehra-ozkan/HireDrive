@@ -1,4 +1,4 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.jobs;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,9 +8,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.users.Driver;
 
-public class jobsInduvidiualController extends  SuperSceneController{
+public class jobsInduvidiualController extends SuperSceneController {
 
     @FXML
     private Label IDText;
@@ -32,6 +34,8 @@ public class jobsInduvidiualController extends  SuperSceneController{
     void btn_clicked(ActionEvent event) {
         if(event.getSource() == chatButton) {
             createScene("/org/example/hiredrive/Scenes/Chat Page Company.fxml", driver);
+            Stage main = (Stage) chatButton.getScene().getWindow();
+            main.close();
         }
     }
 

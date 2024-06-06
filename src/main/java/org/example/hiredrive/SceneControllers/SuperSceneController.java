@@ -13,10 +13,7 @@ public abstract class SuperSceneController {
         Parent root;
 
         try {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-
-
             root = loader.load();
             SuperSceneController controller = loader.getController();
             Scene scene = new Scene(root);

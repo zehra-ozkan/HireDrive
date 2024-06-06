@@ -8,20 +8,23 @@ public class Request {
 
     private String status;
     private User sender;
+    private User recipient;
     private int addID;
     private Advertisement add;
 
     //for users
-    public Request(User sender, Advertisement add) {
-        this.status = "PENDING"; //the default
+    public Request(User sender,User recipient, Advertisement add) {
+        this.status = "PENDING";
+        this.recipient = recipient;
         this.sender = sender;
         this.add = add;
     }
 
     //for database
-    public Request(String status, int sender_id, int add_id) {
+    public Request(String status, int sender_id,int recipent_id, int add_id) {
         this.status = status;
         this.sender = UserConnection.getUser(sender_id);
+        this.recipient = UserConnection.getUser(recipent_id);
         this.addID = add_id;
     }
 

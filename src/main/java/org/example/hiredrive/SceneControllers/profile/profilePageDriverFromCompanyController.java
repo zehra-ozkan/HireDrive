@@ -53,7 +53,6 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
         if(event.getSource() == rate_btn){
 
 
-
         } else if (event.getSource() == logOutButton) {
             company = null;
             driver = null;
@@ -61,6 +60,10 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
             Stage main = (Stage) logOutButton.getScene().getWindow();
             main.close();
 
+        } else if (event.getSource() == goMainPageScene) {
+            createScene("/org/example/hiredrive/Scenes/Search Page Driver.fxml", company);
+            Stage main = (Stage) goMainPageScene.getScene().getWindow();
+            main.close();
         }
     }
 

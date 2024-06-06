@@ -1,9 +1,13 @@
 package org.example.hiredrive.users;
 
 import org.example.hiredrive.Connection.MessageConnection;
+import org.example.hiredrive.Connection.RequestConnection;
 import org.example.hiredrive.Connection.ReviewConnection;
 import org.example.hiredrive.Connection.UserConnection;
+import org.example.hiredrive.advertisement.Request;
 import org.example.hiredrive.message.Message;
+
+import java.util.ArrayList;
 
 public class User {
 
@@ -22,6 +26,13 @@ public class User {
         this.email = email;
         this.rating = 0;
         this.phoneNumber = phoneNumber;
+    }
+
+    public ArrayList<Request> getSentRequests(){
+        return RequestConnection.getSentRequests(userId, null);
+    }
+    public ArrayList<Request> getRecievedRequests(){
+        return RequestConnection.getIncomingRequest(userId);
     }
 
 

@@ -65,12 +65,9 @@ public class Advertisement {
     public void addRequest(Request request){
         RequestConnection.sendJobRequestToAdd(request.getSender().getUserId(), request.getAdd().getAdvertisementID());
     }
-    //TODO getAllRequests
+
     public void getAllRequests(Driver driver){
-        RequestConnection.getRequestsFromDriver(driver.getUserId(),"PENDING");
-        RequestConnection.getRequestsFromDriver(driver.getUserId(),"ACCEPTED");
-        RequestConnection.getRequestsFromDriver(driver.getUserId(),"REJECTED");
-        RequestConnection.getRequestsFromDriver(driver.getUserId(),null);
+        RequestConnection.getSentRequests(driver.getUserId(),null);
     }
 
     // Getter methods

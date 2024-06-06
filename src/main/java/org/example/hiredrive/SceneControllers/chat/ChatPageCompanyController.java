@@ -100,7 +100,7 @@ public class ChatPageCompanyController extends SuperSceneController {
             main.close();}
         else if (event.getSource() == view_profile_btn) {
         Stage main = (Stage) view_profile_btn.getScene().getWindow();
-        createScene("/org/example/hiredrive/Scenes/ProfilePageDriverFromCompany.fxml", company);
+        createScene("/org/example/hiredrive/Scenes/ProfilePageDriverFromCompany.fxml", chats.get(currentChat).getDriver());
         main.close();
 
         }else if (event.getSource() == searchByNameTextArea) {
@@ -127,10 +127,11 @@ public class ChatPageCompanyController extends SuperSceneController {
             company = (Company) data;
         } else if(data instanceof Driver){
             company = ((Driver) data).getWorkWith();
-            setCurrentChat((Driver)data);
+           // setCurrentChat((Driver)data);
         }
         myProfileButton.setText(company.getUsername());
         setChats();
+        if(data instanceof Driver)setCurrentChat((Driver) data);
         setDrivers();
         update();
     }
@@ -158,7 +159,6 @@ public class ChatPageCompanyController extends SuperSceneController {
         }
     }
     public void update() {
-
         messages.getChildren().clear();
         for (Message message : chats.get(currentChat).getMessages()) {
             try{
@@ -202,6 +202,7 @@ public class ChatPageCompanyController extends SuperSceneController {
         for(int i =0; i < chats.size(); i++){
             if(chats.get(i).getDriver().getUserId() == driver.getUserId()){
                 currentChat = i;
+                updateAdvertisement();
                 return;
             }
         }
