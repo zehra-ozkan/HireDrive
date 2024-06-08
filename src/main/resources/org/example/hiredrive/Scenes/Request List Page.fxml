@@ -80,7 +80,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="37.0" prefWidth="1280.0">
                <children>
-                  <RadioButton fx:id="sentRequests" mnemonicParsing="false" onAction="#btn_clicked" text="Sent requests">
+                  <RadioButton fx:id="sentRequests" mnemonicParsing="false" onAction="#rd_clicked" text="Sent requests">
                      <toggleGroup>
                         <ToggleGroup fx:id="request" />
                      </toggleGroup>
@@ -88,14 +88,14 @@
                         <Insets right="500.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="receivedRequests" mnemonicParsing="false" onAction="#btn_clicked" text="Received requests" toggleGroup="$request" />
+                  <RadioButton fx:id="receivedRequests" mnemonicParsing="false" onAction="#rd_clicked" text="Received requests" toggleGroup="$request" />
                </children>
             </HBox>
             <HBox prefHeight="56.0" prefWidth="1080.0" style="-fx-padding: 10; -fx-background-color: #f2f4f7; -fx-background-radius: 10;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="90.0">
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="113.0">
                      <children>
-                        <Label prefHeight="34.0" prefWidth="120.0" text="ID">
+                        <Label prefHeight="34.0" prefWidth="120.0" text="Experience">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -106,9 +106,9 @@
                      </padding>
                   </HBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="350.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="281.0">
                      <children>
-                        <Label prefHeight="31.0" prefWidth="250.0" text="Advertisement Topic">
+                        <Label prefHeight="31.0" prefWidth="332.0" text="User Name">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -122,22 +122,9 @@
                      </padding>
                   </HBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="150.0">
-                     <children>
-                        <Label prefHeight="27.0" prefWidth="134.0" text="Company Name">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </HBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <HBox alignment="CENTER" prefHeight="34.0" prefWidth="120.0">
                      <children>
-                        <Label prefHeight="34.0" prefWidth="120.0" text="Rating">
+                        <Label prefHeight="34.0" prefWidth="127.0" text="Rating">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -148,9 +135,9 @@
                      </padding>
                   </HBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="120.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="220.0">
                      <children>
-                        <Label prefHeight="34.0" prefWidth="125.0" text="Experience">
+                        <Label prefHeight="34.0" prefWidth="173.0" text="Advertisement">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -161,31 +148,6 @@
                      </padding>
                   </HBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="80.0">
-                     <children>
-                        <Label prefHeight="34.0" prefWidth="80.0" text="Date">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </HBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="70.0">
-                     <children>
-                        <Label prefHeight="27.0" prefWidth="60.0" text="Owner">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </HBox>
                </children>
                <VBox.margin>
                   <Insets left="100.0" right="100.0" />
@@ -195,6 +157,9 @@
                <VBox.margin>
                   <Insets bottom="20.0" left="100.0" right="100.0" />
                </VBox.margin>
+               <content>
+                  <VBox fx:id="request_box" prefHeight="598.0" prefWidth="1078.0" />
+               </content>
             </ScrollPane>
          </children>
       </VBox>

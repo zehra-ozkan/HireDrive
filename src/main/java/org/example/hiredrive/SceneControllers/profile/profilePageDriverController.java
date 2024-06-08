@@ -113,7 +113,9 @@ public class profilePageDriverController extends SuperSceneController {
             main.close();
 
         }else if(event.getSource() == job_btn) {
-
+            createScene("/org/example/hiredrive/Scenes/Jobs.fxml", this);
+            Stage main = (Stage) job_btn.getScene().getWindow();
+            main.close();
         } else if (event.getSource() == logOutButton) {
             user = null;
             prevScene = null;

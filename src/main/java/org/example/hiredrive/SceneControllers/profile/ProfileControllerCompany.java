@@ -101,6 +101,9 @@ public class ProfileControllerCompany extends SuperSceneController {
     @FXML
     void link_clicked(ActionEvent event) {
         if(event.getSource() == requestBtn) {
+            createScene("/org/example/hiredrive/Scenes/Request List Page.fxml", user);
+            Stage main = (Stage) job_btn.getScene().getWindow();
+            main.close();
 
         }else if(event.getSource() == goMainPageScene) {
 
@@ -117,8 +120,11 @@ public class ProfileControllerCompany extends SuperSceneController {
 
     @Override
     public void setData(Object data){
-        prevScene = (SuperSceneController) data;
-        user = prevScene.getUserData();
+        if(data instanceof SuperSceneController){
+            prevScene = (SuperSceneController) data;
+            user = prevScene.getUserData();
+        }
+        else user = (User) data;
         update();
     }
     public User getUserData(){

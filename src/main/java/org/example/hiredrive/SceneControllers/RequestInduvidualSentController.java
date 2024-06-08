@@ -12,10 +12,8 @@ import org.example.hiredrive.advertisement.Request;
 import org.example.hiredrive.users.Driver;
 import org.example.hiredrive.users.User;
 
-public class RequestInduvidualController extends SuperSceneController{
+public class RequestInduvidualSentController extends SuperSceneController{
 
-    @FXML
-    private Button accept_btn;
 
     @FXML
     private Label adverrtisement_label;
@@ -35,19 +33,13 @@ public class RequestInduvidualController extends SuperSceneController{
     @FXML
     private ImageView ratingPng;
 
-    @FXML
-    private Button reject_btn;
+
 
     private User user;
     private Request r;
 
     @FXML
     void btn_clicked(ActionEvent event) {
-        if(event.getSource() == accept_btn) {
-
-        }else if(event.getSource() == reject_btn) {
-
-        }
 
     }
 
@@ -66,11 +58,10 @@ public class RequestInduvidualController extends SuperSceneController{
 
     @Override
     public void setData(Object data){
-        RequestListController prevScene = (RequestListController) data;
-        r = prevScene.getCurrentRequest();
+        r = (Request)data;
         user = r.getSender();
-        experience_text.setText(user.getExperience() + "");
-        nameSurnameText.setText(user.getUsername());
+        experience_text.setText(r.getStatus());
+        nameSurnameText.setText(r.getAdd().getOwner().getUsername());
         adverrtisement_label.setText(r.getAdd().toString());
     }
 }

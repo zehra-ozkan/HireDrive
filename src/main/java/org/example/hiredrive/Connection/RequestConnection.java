@@ -76,9 +76,9 @@ public class RequestConnection {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             String query;
             if (status != null) {
-                query = "SELECT add_id, status FROM jobRequests WHERE sender_id = ? AND status = ?";
+                query = "SELECT add_id, status, reciever_id FROM jobRequests WHERE sender_id = ? AND status = ?";
             } else {
-                query = "SELECT add_id, status FROM jobRequests WHERE sender_id = ?";
+                query = "SELECT add_id, status, reciever_id FROM jobRequests WHERE sender_id = ?";
             }
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, user_id);
@@ -107,7 +107,7 @@ public class RequestConnection {
     }
     public static ArrayList<Request> getIncomingRequest(int userId) {
         ArrayList<Request> requests = new ArrayList<>();
-        String sql = "SELECT * FROM requests WHERE reciever_id = ?";
+        String sql = "SELECT * FROM jobRequests WHERE reciever_id = ? AND  status = 'PENDING' ";
 
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

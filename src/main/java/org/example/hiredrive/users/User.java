@@ -77,4 +77,7 @@ public class User {
     }
 
 
+    public int getExperience() {
+        return -1;
+    }
 }

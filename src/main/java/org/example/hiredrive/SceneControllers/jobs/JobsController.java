@@ -52,16 +52,17 @@ public class JobsController extends SuperSceneController {
     void btn_clicked(ActionEvent event) {
         if (event.getSource() == myProfileButton) {
             Stage main = (Stage) myProfileButton.getScene().getWindow();
-            createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml");
+            createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
             main.close();
         }
         else if(event.getSource() == goMainPageScene) {
             Stage main = (Stage) myProfileButton.getScene().getWindow();
-            createScene("/org/example/hiredrive/Scenes/Search Page Company.fxml");
+            createScene("/org/example/hiredrive/Scenes/Search Page Company.fxml", company);
             main.close();
 
         } else if(event.getSource() == logOutButton) {
             createScene("/org/example/hiredrive/Scenes/entranceScene.fxml");
+            company = null;
             Stage main = (Stage) logOutButton.getScene().getWindow();
             main.close();
         }
@@ -71,14 +72,10 @@ public class JobsController extends SuperSceneController {
             try{
 
                 FXMLLoader loader = new FXMLLoader();
-
                 loader.setLocation(getClass().getResource("/org/example/hiredrive/Scenes/jobsInduvidiual.fxml"));
                 HBox profilePage = loader.load();
-
                 jobsInduvidiualController jController = loader.getController();
-
                 jController.setData(driver);
-
                 job_box.getChildren().add(profilePage);
 
             }catch (IOException e){
@@ -87,6 +84,8 @@ public class JobsController extends SuperSceneController {
         }
     }
 
+
+    //todo a version for the driver is needed
     @Override
     public void setData(Object data) {
         prevScene = (SuperSceneController) data;

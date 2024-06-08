@@ -190,11 +190,12 @@ public class AdvertisementConnection {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     int sender_id = resultSet.getInt("sender_id");
+                    int reciever_id = resultSet.getInt("reciever_id");
                     int addId = resultSet.getInt("add_id");
                     String status = resultSet.getString("status");
 
                     // Create JobRequest object
-                    Request request = new Request(status, sender_id, addId);
+                    Request request = new Request(status, sender_id, reciever_id, addId);
                     requests.add(request);
                 }
             }
