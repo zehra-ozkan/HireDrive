@@ -61,7 +61,7 @@ public class RequestInduvidualSentController extends SuperSceneController{
         r = (Request)data;
         user = r.getSender();
         experience_text.setText(r.getStatus());
-        nameSurnameText.setText(r.getAdd().getOwner().getUsername());
+        nameSurnameText.setText(r.getRecipient().getUsername());
         adverrtisement_label.setText(r.getAdd().toString());
     }
 }

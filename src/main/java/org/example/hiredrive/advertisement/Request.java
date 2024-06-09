@@ -1,6 +1,7 @@
 package org.example.hiredrive.advertisement;
 
 import org.example.hiredrive.Connection.AdvertisementConnection;
+import org.example.hiredrive.Connection.RequestConnection;
 import org.example.hiredrive.Connection.UserConnection;
 import org.example.hiredrive.users.User;
 
@@ -32,11 +33,17 @@ public class Request {
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
+        RequestConnection.replyRequest(sender.getUserId(), addID, status);
+        sender.addWorksWith(recipient);
+
     }
     public User getSender() {
         return sender;
+    }public User getRecipient() {
+        return recipient;
     }
     public Advertisement getAdd(){
         if(add == null) add = AdvertisementConnection.getAdvertisementById(addID);

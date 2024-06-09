@@ -44,12 +44,12 @@ public class RequestConnection {
         }
     }
 
-    public static void replyRequest(int driver_id, int add_id, boolean accepted) {
+    public static void replyRequest(int sender_id, int add_id, String status) {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String query = "UPDATE jobRequests SET status = ? WHERE driver_id = ? AND add_id = ?";
+            String query = "UPDATE jobRequests SET status = ? WHERE sender_id = ? AND add_id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setString(1, accepted ? "ACCEPTED" : "REJECTED");
-                preparedStatement.setInt(2, driver_id);
+                preparedStatement.setString(1, status);
+                preparedStatement.setInt(2, sender_id);
                 preparedStatement.setInt(3, add_id);
 
                 int rowsAffected = preparedStatement.executeUpdate();

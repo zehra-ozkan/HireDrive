@@ -58,7 +58,8 @@ public class RequestListController extends SuperSceneController{
     private User user;
     private ArrayList<Request> sendR;
     private ArrayList<Request> receivedR;
-    private int currentReq;
+    private int currentSent;
+    private int currentReceived;
 
     @FXML
     void btn_clicked(ActionEvent event) {
@@ -116,11 +117,9 @@ public class RequestListController extends SuperSceneController{
             path = "/org/example/hiredrive/Scenes/RequestInduvidualSent.fxml";
         }
         request_box.getChildren().clear();
-        for (Request req : m) {
-            public int getCurrentRequest() {
-                return 0;
-            }
-            }
+        for (int i = 0; i < m.size(); i++) {
+            Request req = m.get(i);
+
             try {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource(path));
@@ -128,19 +127,41 @@ public class RequestListController extends SuperSceneController{
 
                 if (m.equals(sendR)) {
                     RequestInduvidualSentController  k = loader.getController();
+                    updateSent(i);
                     k.setData(req);
                 }
-
                 else{
                     RequestInduvidualController cController = loader.getController();
-                    cController.setData(req);
+                    updateReceived(i);
+                    cController.setData(this);
+
                 }
                 request_box.getChildren().add(profilePage);
-
-
             }catch (IOException e){
                 e.printStackTrace();
             }
         }
+    }
+    private void updateSent(int k) {
+        currentSent = k;
+    }
+    private void updateReceived(int k) {
+        currentReceived = k;
+    }
+    public Request getCurrentRecievedRequest(){
+        return receivedR.get(currentReceived);
+    }
+    public Request getCurrentSentRequest(){
+        return sendR.get(currentSent);
+    }
+    public void AcceptRequest(Request request){
+        request.setStatus("ACCEPTED");
+        receivedR.remove(request);
+        update();
+    }
+    public void RejectRequest(Request request){
+        request.setStatus("REJECTED");
+        receivedR.remove(request);
+        update();
     }
 }

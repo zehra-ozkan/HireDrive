@@ -7,6 +7,8 @@ import org.example.hiredrive.Connection.UserConnection;
 import org.example.hiredrive.advertisement.Request;
 import org.example.hiredrive.message.Message;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class User {
@@ -79,5 +81,24 @@ public class User {
 
     public int getExperience() {
         return -1;
+    }
+    public boolean isDriver(){
+        return this.userType.equals("driver");
+    }
+    public void addWorksWith(User user){
+        int driver_id = -5; //to shut the compiler
+        int company_id = -5; //to shut the cı-ompiler
+        if(user.isDriver() && !this.isDriver()){
+            driver_id = user.userId;
+            company_id = userId;
+        }
+        else if(!user.isDriver() && this.isDriver()){
+            driver_id = userId;
+            company_id = user.userId;
+        }
+        else{
+            System.out.println("PROBLENM \n PROBLEM \n PROBLEMMMMMMMM");
+        }
+        UserConnection.addWorksWith(driver_id , company_id, Date.valueOf(LocalDate.now()));
     }
 }

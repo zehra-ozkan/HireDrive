@@ -40,34 +40,38 @@ public class RequestInduvidualController extends SuperSceneController{
 
     private User user;
     private Request r;
+    private RequestListController prevScene;
 
     @FXML
     void btn_clicked(ActionEvent event) {
         if(event.getSource() == accept_btn) {
-
+            prevScene.AcceptRequest(r);
         }else if(event.getSource() == reject_btn) {
-
+            prevScene.RejectRequest(r);
         }
-
     }
 
     @FXML
     void mouse_entered(MouseEvent event) {
         if (event.getSource() == adverrtisement_label) {
             adverrtisement_label.setVisible(true);
+
         }
+        else if (event.getSource() == job_box) {
+            job_box.setStyle("-fx-background-color: #ADD8E6;");
 
+        }
     }
-
+    //todo the graphic need a bit work
     @FXML
     void mouse_exited(MouseEvent event) {
-
+            job_box.setStyle("-fx-background-color: #FFFFFF;");
     }
 
     @Override
     public void setData(Object data){
-        RequestListController prevScene = (RequestListController) data;
-        r = prevScene.getCurrentRequest();
+        prevScene = (RequestListController) data;
+        r = prevScene.getCurrentRecievedRequest();
         user = r.getSender();
         experience_text.setText(user.getExperience() + "");
         nameSurnameText.setText(user.getUsername());
