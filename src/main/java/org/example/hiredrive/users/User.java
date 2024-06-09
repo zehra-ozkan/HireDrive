@@ -4,6 +4,7 @@ import org.example.hiredrive.Connection.MessageConnection;
 import org.example.hiredrive.Connection.RequestConnection;
 import org.example.hiredrive.Connection.ReviewConnection;
 import org.example.hiredrive.Connection.UserConnection;
+import org.example.hiredrive.advertisement.Advertisement;
 import org.example.hiredrive.advertisement.Request;
 import org.example.hiredrive.message.Message;
 
@@ -11,7 +12,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class User {
+public abstract class User {
 
     protected int userId;
     protected String username;
@@ -85,12 +86,13 @@ public class User {
     public boolean isDriver(){
         return this.userType.equals("driver");
     }
-    public void addWorksWith(User user){
+    public void addWorksWith(User user, Advertisement add) {
         int driver_id = -5; //to shut the compiler
         int company_id = -5; //to shut the cı-ompiler
         if(user.isDriver() && !this.isDriver()){
             driver_id = user.userId;
             company_id = userId;
+
         }
         else if(!user.isDriver() && this.isDriver()){
             driver_id = userId;
@@ -99,6 +101,7 @@ public class User {
         else{
             System.out.println("PROBLENM \n PROBLEM \n PROBLEMMMMMMMM");
         }
-        UserConnection.addWorksWith(driver_id , company_id, Date.valueOf(LocalDate.now()));
+        UserConnection.addWorksWith(driver_id , company_id, add.getAdvertisementID(), Date.valueOf(LocalDate.now()));
     }
+    public abstract void updateWorksWith();
 }

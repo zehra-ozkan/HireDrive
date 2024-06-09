@@ -32,6 +32,10 @@ public class Company extends User {
     public ArrayList<Driver> getWorksWith() {
         return worksWith;
     }
+    @Override
+    public void updateWorksWith(){
+        worksWith = UserConnection.getAssociatedDrivers(userId);
+    }
 
     @Override
     public String toString() {

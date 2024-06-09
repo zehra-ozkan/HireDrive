@@ -37,7 +37,10 @@ public class Request {
     public void setStatus(String status) {
         this.status = status;
         RequestConnection.replyRequest(sender.getUserId(), addID, status);
-        sender.addWorksWith(recipient);
+        sender.addWorksWith(recipient, add);
+        if(status.equals("ACCEPTED")) {
+            sender.updateWorksWith();
+        }
 
     }
     public User getSender() {

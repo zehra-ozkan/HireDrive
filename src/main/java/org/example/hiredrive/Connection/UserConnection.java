@@ -370,14 +370,15 @@ public class UserConnection {
         return drivers;
     }
 
-    public static void addWorksWith(int driverId, int companyId, Date startDate) {
+    public static void addWorksWith(int driverId, int companyId,int advert_id, Date startDate) {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             // Prepare SQL statement
-            String sql = "INSERT INTO works_with (driver_id, company_id, start_date) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO works_with (driver_id, company_id, start_date, advert_id) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, driverId);
             statement.setInt(2, companyId);
             statement.setDate(3, new java.sql.Date(startDate.getTime()));
+            statement.setInt(4, advert_id);
 
             // Execute the update
             int rowsAffected = statement.executeUpdate();

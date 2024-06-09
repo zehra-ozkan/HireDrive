@@ -59,6 +59,11 @@ public class Driver extends User {
     public ArrayList<String> getLicenses(){
         return LicencesConnection.getLicensesForDriver(userId);
     }
+    @Override
+    public void updateWorksWith(){
+        worksWith = UserConnection.getCompanyOfDriver(userId);
+
+    }
 
     public Company getWorkWith(){
         if(worksWith == null) worksWith = UserConnection.getCompanyOfDriver(userId);
