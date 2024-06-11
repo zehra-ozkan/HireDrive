@@ -92,10 +92,12 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
         driver = (Driver) data;
         company = driver.getWorkWith();
         advertisementInfo.setText(driver.getAdvertisement().toString());
+        update();
+
+    }
+    private void update(){
         userInfo.setText(driver.getUsername());
         setNewRatingImage(driver.getRating());
-
-
     }
 
     private void setNewRatingImage(double rating) {
@@ -145,5 +147,11 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
     @Override
     public User getReceiver() {
         return driver;
+    }
+
+    @Override
+    public void updateRating() {
+        driver.updateReviews();
+        update();
     }
 }

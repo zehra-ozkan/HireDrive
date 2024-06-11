@@ -6,5 +6,6 @@ public interface Reviewable {
 
     User getSender();
     User getReceiver();
+    void updateRating();
 
 }

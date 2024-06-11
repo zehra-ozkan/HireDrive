@@ -34,6 +34,7 @@ public class ReviewPageController extends SuperSceneController{
                 review.setComment(comment_txt.getText());
                 review.setRating(Integer.parseInt(rate_txt.getText().trim()));
                 user.reviewUser(otherUser, review);
+                ((Reviewable)prev).updateRating();
 
                 Stage main = (Stage) submit_btn.getScene().getWindow();
                 main.close();

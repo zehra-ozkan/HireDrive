@@ -81,6 +81,7 @@ public abstract class User {
     }
     public void updateReviews(){
         reviews = ReviewConnection.getReviewsForUser(userId);
+        rating = ReviewConnection.getRating(userId);
     }
     public void reviewUser(User user, Review review){
         ReviewConnection.addReview(userId, user.userId, review.getComment(), review.getRating());
