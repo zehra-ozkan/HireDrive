@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public abstract class User {
 
     protected int userId;
+    protected ArrayList<Review> reviews;
     protected String username;
     protected String password;
     protected String email;
@@ -74,9 +75,19 @@ public abstract class User {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+    public ArrayList<Review> getReviews() {
+        if(this.reviews == null)reviews = ReviewConnection.getReviewsForUser(userId);
+        return reviews;
+    }
+    public void updateReviews(){
+        reviews = ReviewConnection.getReviewsForUser(userId);
+    }
+    public void reviewUser(User user, Review review){
+        ReviewConnection.addReview(userId, user.userId, review.getComment(), review.getRating());
+    }
 
     public String toString(){
-        return this.userId + this.username + " "  + " " + this.password + " " + this.email;
+        return this.userId + this.username + " "  + " " + this.email;
     }
 
 
@@ -102,6 +113,9 @@ public abstract class User {
             System.out.println("PROBLENM \n PROBLEM \n PROBLEMMMMMMMM");
         }
         UserConnection.addWorksWith(driver_id , company_id, add.getAdvertisementID(), Date.valueOf(LocalDate.now()));
+    }
+    public boolean worksWith(User user, User otherUser){
+        return UserConnection.worksWith(user.userId, otherUser.userId);
     }
     public abstract void updateWorksWith();
 }

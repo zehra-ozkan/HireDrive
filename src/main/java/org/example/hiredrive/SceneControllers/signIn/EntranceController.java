@@ -45,4 +45,8 @@ public class EntranceController extends SuperSceneController {
         }
     }
 
+    @Override
+    public void setData(Object Data) {
+
+    }
 }

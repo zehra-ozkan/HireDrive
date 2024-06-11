@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="1059.0" style="-fx-background-color: #0d376a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.RequestInduvidualController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="1059.0" style="-fx-background-color: #0d376a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hiredrive.SceneControllers.request.RequestInduvidualRecievedController">
    <children>
       <Label prefHeight="198.0" prefWidth="74.0" text="Label" />
       <HBox fx:id="job_box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouse_entered" onMouseExited="#mouse_exited" prefHeight="50.0" prefWidth="1050.0" style="-fx-background-color: white;">

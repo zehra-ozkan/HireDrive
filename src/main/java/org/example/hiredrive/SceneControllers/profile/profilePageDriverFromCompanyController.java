@@ -9,17 +9,23 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.example.hiredrive.SceneControllers.Reviewable;
 import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.users.Company;
 import org.example.hiredrive.users.Driver;
+import org.example.hiredrive.users.Review;
+import org.example.hiredrive.users.User;
 
-public class profilePageDriverFromCompanyController extends SuperSceneController {
+public class profilePageDriverFromCompanyController extends SuperSceneController implements Reviewable {
 
     @FXML
     private Button back_btn;
 
     @FXML
     private Button goMainPageScene;
+
+    @FXML
+    private Button finish_btn;
 
     @FXML
     private Button logOutButton;
@@ -45,13 +51,16 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
     @FXML
     private Label userInfo;
 
+    @FXML
+    private Label advertisementInfo;
+
     private Company company;
     private Driver driver;
 
     @FXML
     void btn_clicked(ActionEvent event) {
         if(event.getSource() == rate_btn){
-
+            createScene("/org/example/hiredrive/Scenes/ReviewPage.fxml", this);
 
         } else if (event.getSource() == logOutButton) {
             company = null;
@@ -61,7 +70,13 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
             main.close();
 
         } else if (event.getSource() == goMainPageScene) {
-            createScene("/org/example/hiredrive/Scenes/Search Page Driver.fxml", company);
+            createScene("/org/example/hiredrive/Scenes/Search Page Company.fxml", company);
+            Stage main = (Stage) goMainPageScene.getScene().getWindow();
+            main.close();
+        } else if(event.getSource() == finish_btn){
+
+        }else if(event.getSource() == back_btn){
+            createScene("/org/example/hiredrive/Scenes/ProfilePageCompany.fxml", company);
             Stage main = (Stage) goMainPageScene.getScene().getWindow();
             main.close();
         }
@@ -76,8 +91,11 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
     public void setData(Object data){
         driver = (Driver) data;
         company = driver.getWorkWith();
+        advertisementInfo.setText(driver.getAdvertisement().toString());
         userInfo.setText(driver.getUsername());
         setNewRatingImage(driver.getRating());
+
+
     }
 
     private void setNewRatingImage(double rating) {
@@ -117,5 +135,15 @@ public class profilePageDriverFromCompanyController extends SuperSceneController
             Image im = new Image(getClass().getResourceAsStream("/org/example/hiredrive/pngs/5.png"));
             ratingPng.setImage(im);
         }
+    }
+
+    @Override
+    public User getSender() {
+        return company;
+    }
+
+    @Override
+    public User getReceiver() {
+        return driver;
     }
 }

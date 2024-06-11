@@ -48,4 +48,9 @@ public class HomePageController extends SuperSceneController implements Initiali
 
        // resultLabel.setText(UserConnection.getAllUsers("driver"));
     }
+
+    @Override
+    public void setData(Object Data) {
+
+    }
 }

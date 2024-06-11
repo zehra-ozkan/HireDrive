@@ -78,6 +78,12 @@ public class DriverSignUpController extends SuperSceneController {
             main.close();
         }
     }
+
+    @Override
+    public void setData(Object Data) {
+
+    }
+
     @Override
     public User getUserData() {
         return new Driver(name, surname, pass , mail, phone, experience);

@@ -40,8 +40,8 @@ public class Request {
         sender.addWorksWith(recipient, add);
         if(status.equals("ACCEPTED")) {
             sender.updateWorksWith();
+            recipient.updateWorksWith();
         }
-
     }
     public User getSender() {
         return sender;
@@ -51,5 +51,8 @@ public class Request {
     public Advertisement getAdd(){
         if(add == null) add = AdvertisementConnection.getAdvertisementById(addID);
         return add;
+    }
+    public String toString(){
+        return "sent from " + sender + " to " + recipient + " on addvertisement " + add;
     }
 }

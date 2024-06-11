@@ -36,4 +36,9 @@ public class SignUpController extends SuperSceneController {
             main.close();
         }
     }
+
+    @Override
+    public void setData(Object Data) {
+
+    }
 }

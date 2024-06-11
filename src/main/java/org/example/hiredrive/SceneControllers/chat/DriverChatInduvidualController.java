@@ -82,4 +82,8 @@ public class DriverChatInduvidualController extends SuperSceneController{
         dueDate.setText(last.getDate() + "");
     }
 
+    @Override
+    public void setData(Object Data) {
+
+    }
 }

@@ -570,33 +570,7 @@ public class UserConnection {
         }
         return users;
     }
-//    public static List<Request> getRequestsFromDriver(int driverId, String status) {
-//        List<Request> requests = new ArrayList<>();
-//        String sql = "SELECT * FROM requests WHERE driver_id = ? AND status = ?";
-//
-//        try (Connection conn = DriverManager.getConnection(url, username, password);
-//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setInt(1, driverId);
-//            pstmt.setString(2, status);
-//            ResultSet rs = pstmt.executeQuery();
-//
-//            while (rs.next()) {
-//                int requestId = rs.getInt("request_id");
-//                int companyId = rs.getInt("company_id");
-//                String requestStatus = rs.getString("status");
-//                Date dateCreated = rs.getDate("date_created");
-//
-//                Request request = new Request(requestStatus, companyId, driverId, 4);
-//                requests.add(request);
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
-//        return requests;
-//    }
 
-
-    
 
     public static void main(String[] args) {
 

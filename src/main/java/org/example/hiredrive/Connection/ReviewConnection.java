@@ -1,7 +1,10 @@
 package org.example.hiredrive.Connection;
 
+import org.example.hiredrive.users.Review;
+
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class ReviewConnection {
@@ -113,7 +116,7 @@ public class ReviewConnection {
             stmt.setDouble(1, sender_id);
             stmt.setDouble(2, user_id);
             stmt.setString(3, comment);
-            stmt.setDouble(3, rating);
+            stmt.setDouble(4, rating);
 
             int rows_affected = stmt.executeUpdate();
 
@@ -135,5 +138,40 @@ public class ReviewConnection {
             }
         }
     }
+    public static ArrayList<Review> getReviewsForUser(int user_id) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        ArrayList<Review> reviews = new ArrayList<>();
 
+        try {
+            conn = DriverManager.getConnection(url, username, password);
+
+            String query = "SELECT * FROM review receiver_id = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setDouble(1, user_id);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int sender_id = rs.getInt("sender");
+                String comment = rs.getString("comment");
+                int rating = rs.getInt("rate");
+
+                reviews.add(new Review(sender_id, user_id, comment, rating));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close all resources
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return reviews;
+    }
 }

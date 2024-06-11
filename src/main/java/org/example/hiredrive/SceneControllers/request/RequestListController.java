@@ -1,14 +1,10 @@
-package org.example.hiredrive.SceneControllers;
+package org.example.hiredrive.SceneControllers.request;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import org.example.hiredrive.Connection.RequestConnection;
-import org.example.hiredrive.SceneControllers.jobs.jobsInduvidiualController;
+import org.example.hiredrive.SceneControllers.SuperSceneController;
 import org.example.hiredrive.advertisement.Request;
-import org.example.hiredrive.users.Company;
-import org.example.hiredrive.users.Driver;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +19,7 @@ import org.example.hiredrive.users.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class RequestListController extends SuperSceneController{
+public class RequestListController extends SuperSceneController {
 
     @FXML
     private Button goMainPageScene;
@@ -126,12 +122,12 @@ public class RequestListController extends SuperSceneController{
                 StackPane profilePage = loader.load();
 
                 if (m.equals(sendR)) {
-                    RequestInduvidualSentController  k = loader.getController();
+                    RequestInduvidualSentController k = loader.getController();
                     updateSent(i);
                     k.setData(req);
                 }
                 else{
-                    RequestInduvidualController cController = loader.getController();
+                    RequestInduvidualRecievedController cController = loader.getController();
                     updateReceived(i);
                     cController.setData(this);
 
@@ -156,6 +152,7 @@ public class RequestListController extends SuperSceneController{
     }
     public void AcceptRequest(Request request){
         request.setStatus("ACCEPTED");
+        user = request.getRecipient();
         receivedR.remove(request);
         update();
     }

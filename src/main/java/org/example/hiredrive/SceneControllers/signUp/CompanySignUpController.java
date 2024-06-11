@@ -75,6 +75,11 @@ public class CompanySignUpController extends SuperSceneController {
     }
 
     @Override
+    public void setData(Object Data) {
+
+    }
+
+    @Override
     public User getUserData() {
         return new Company(name, pass, mail, phone);
     }

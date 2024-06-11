@@ -31,4 +31,6 @@ module org.example.hiredrive {
     opens org.example.hiredrive.SceneControllers.chat to javafx.fxml;
     exports org.example.hiredrive.SceneControllers.jobs;
     opens org.example.hiredrive.SceneControllers.jobs to javafx.fxml;
+    exports org.example.hiredrive.SceneControllers.request;
+    opens org.example.hiredrive.SceneControllers.request to javafx.fxml;
 }

@@ -61,4 +61,9 @@ public class SignInController extends SuperSceneController {
             wrongPrompt.setVisible(true);
         }
     }
+
+    @Override
+    public void setData(Object Data) {
+
+    }
 }
